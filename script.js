@@ -13,6 +13,30 @@ var charsUpper = charsLower.toUpperCase();
 var charsNumbers = "012345679";
 var charsSpecial = "!@#$%^&*()_+";
 
+function checkPasswordQuality(pwString) {
+  var strength = 0;
+
+  strength += /[A-Z]+/.test(pwString) ? 1 : 0;
+  strength += /[a-z]+/.test(pwString) ? 1 : 0;
+  strength += /[0-9]+/.test(pwString) ? 1 : 0;
+  strength += /[\W]+/.test(pwString) ? 1 : 0;
+
+  switch(strength) {
+      case 2:
+        result.innerText="weak"
+      case 3:
+        result.innerText="medium";
+          break;
+      case 4 :
+        result.innerText="strong";
+          // it's strong!
+          break;
+      default:
+        result.innerText="very weak";
+          // it's weak!
+          break;
+  }
+}
 
 function checkForm() {
   var number = numberInput.value;
@@ -48,27 +72,4 @@ function checkForm() {
   
 }
 
-function checkPasswordQuality(pwString) {
-  var strength = 0;
 
-  strength += /[A-Z]+/.test(pwString) ? 1 : 0;
-  strength += /[a-z]+/.test(pwString) ? 1 : 0;
-  strength += /[0-9]+/.test(pwString) ? 1 : 0;
-  strength += /[\W]+/.test(pwString) ? 1 : 0;
-
-  switch(strength) {
-      case 2:
-        result.innerText="weak"
-      case 3:
-        result.innerText="medium";
-          break;
-      case 4:
-        result.innerText="strong";
-          // it's strong!
-          break;
-      default:
-        result.innerText="very weak";
-          // it's weak!
-          break;
-  }
-}
